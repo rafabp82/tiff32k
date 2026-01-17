@@ -1,0 +1,19 @@
+name: Criar EXE para Windows
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Compilar o programa
+      run: gcc tiff32k.c -o tiff32k.exe
+      
+    - name: Fazer Upload do EXE
+      uses: actions/upload-artifact@v3
+      with:
+        name: programa-pronto
+        path: tiff32k.exe
